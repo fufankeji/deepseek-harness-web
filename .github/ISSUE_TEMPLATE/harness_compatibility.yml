@@ -1,0 +1,61 @@
+name: Harness Compatibility
+description: Report a Harness release, interface, or compatibility result.
+title: "[Compatibility]: "
+labels:
+  - compatibility
+body:
+  - type: input
+    id: harness
+    attributes:
+      label: Harness name and version
+      placeholder: Product name, version, and release date
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Official source
+      description: Link the official release, repository, package, or documentation.
+    validations:
+      required: true
+  - type: dropdown
+    id: interface
+    attributes:
+      label: Available interface
+      options:
+        - HTTP, SSE, or WebSocket API
+        - SDK
+        - JSONL or NDJSON CLI
+        - Interactive CLI or TUI
+        - Desktop application only
+        - Unknown or mixed
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      placeholder: macOS, Windows, Linux, architecture
+    validations:
+      required: true
+  - type: textarea
+    id: capabilities
+    attributes:
+      label: Observed capabilities
+      description: List only capabilities confirmed by documentation or direct observation.
+    validations:
+      required: true
+  - type: textarea
+    id: raw
+    attributes:
+      label: Sanitized raw interface or output sample
+      description: Remove credentials, private paths, private code, and personal information.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: The linked source is official or clearly identified as an observation.
+          required: true
+        - label: I removed credentials, private code, paths, and personal information.
+          required: true

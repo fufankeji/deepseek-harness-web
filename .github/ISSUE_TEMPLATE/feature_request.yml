@@ -1,0 +1,48 @@
+name: Feature Request
+description: Propose a user-facing capability or compatibility improvement.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem
+      description: Describe the user journey and the problem, not only a preferred implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Expected observable result
+      description: What should the user be able to see or do?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Harness evidence or references
+      description: If this depends on a Harness capability, link the official release or documentation.
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Journey stage
+      options:
+        - Connect or probe Harness
+        - Select workspace
+        - Create or resume session
+        - Submit task
+        - Observe execution
+        - Approve or control execution
+        - Inspect files, Diff, terminal, or artifacts
+        - Adapter compatibility
+        - Other
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I checked the PRD and existing issues before submitting.
+          required: true

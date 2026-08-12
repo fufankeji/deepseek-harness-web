@@ -1,0 +1,71 @@
+name: Bug Report
+description: Report a reproducible problem in DeepSeekHarnessWeb.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a problem. Remove credentials, private code, and personal information from every field.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Web UI
+        - Local Bridge
+        - Harness Adapter
+        - Workspace or Git
+        - Web Terminal or PTY
+        - Documentation
+        - Unsure
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Project version or commit
+      placeholder: commit SHA, tag, or branch
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: OS, browser, runtime, and Harness version if applicable
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest reliable sequence that reproduces the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized evidence
+      description: Add screenshots, raw events, or logs only after removing secrets and private data.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I searched existing issues for the same problem.
+          required: true
+        - label: I removed credentials, private code, and personal information.
+          required: true

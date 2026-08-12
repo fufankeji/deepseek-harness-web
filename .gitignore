@@ -1,0 +1,25 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Operating systems
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs and temporary files
+*.log
+.cache/
+tmp/
+temp/
+
+# Local build artifacts; extend after the technology stack is selected
+dist/
+build/
+coverage/
