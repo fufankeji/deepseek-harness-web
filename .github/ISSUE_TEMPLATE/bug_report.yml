@@ -17,7 +17,7 @@ body:
         - Local Bridge
         - Harness Adapter
         - Workspace or Git
-        - Web Terminal or PTY
+        - Tool or command output
         - Documentation
         - Unsure
     validations:

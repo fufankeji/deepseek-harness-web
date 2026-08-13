@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">FF - DeepSeek Harness Web 总体架构</title>
+  <desc id="desc">浏览器工作台经 Local Bridge 和统一 Adapter 合同连接 DeepSeek 官方 Harness 或 Pi Agent，并将本地代码变化、事件和验收记录持久化。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fbfdff"/><stop offset="1" stop-color="#f2f7ff"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#31558a" flood-opacity=".13"/></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#5877a9"/></marker>
+    <style>.t{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;fill:#172238}.h{font-size:38px;font-weight:750}.s{font-size:22px;fill:#5d6d88}.box{fill:#fff;stroke:#cbd9ef;stroke-width:2;filter:url(#shadow)}.main{fill:#eef4ff;stroke:#6d91ff}.adapter{fill:#f0fbf7;stroke:#68c9a4}.runtime{fill:#fff8e9;stroke:#e1b95d}.data{fill:#f8f3ff;stroke:#a98de2}.label{font-size:25px;font-weight:700}.small{font-size:18px;fill:#687994}.line{stroke:#5877a9;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text class="t h" x="86" y="86">FF - DeepSeek Harness Web 总体架构</text>
+  <text class="t s" x="86" y="126">浏览器交互、统一适配、真实 Harness 执行与本地证据闭环</text>
+  <rect class="box main" x="70" y="310" rx="24" width="250" height="150"/>
+  <text class="t label" x="195" y="372" text-anchor="middle">React Web 工作台</text>
+  <text class="t small" x="195" y="410" text-anchor="middle">配置 · 会话 · 代码树</text>
+  <text class="t small" x="195" y="438" text-anchor="middle">工具过程 · Diff · 诊断</text>
+  <rect class="box main" x="405" y="310" rx="24" width="250" height="150"/>
+  <text class="t label" x="530" y="372" text-anchor="middle">Local Bridge</text>
+  <text class="t small" x="530" y="410" text-anchor="middle">HTTP API · Session SSE</text>
+  <text class="t small" x="530" y="438" text-anchor="middle">状态归约 · 安全边界</text>
+  <rect class="box adapter" x="740" y="310" rx="24" width="250" height="150"/>
+  <text class="t label" x="865" y="372" text-anchor="middle">HarnessAdapter</text>
+  <text class="t small" x="865" y="410" text-anchor="middle">统一能力与命令合同</text>
+  <text class="t small" x="865" y="438" text-anchor="middle">供应商事件标准化</text>
+  <rect class="box runtime" x="1085" y="190" rx="24" width="420" height="150"/>
+  <text class="t label" x="1295" y="250" text-anchor="middle">DeepSeek 官方 Harness</text>
+  <text class="t small" x="1295" y="288" text-anchor="middle">DSH RPC / WebSocket · Tool · Session</text>
+  <text class="t small" x="1295" y="316" text-anchor="middle">DeepSeek 模型服务</text>
+  <rect class="box runtime" x="1085" y="445" rx="24" width="420" height="135"/>
+  <text class="t label" x="1295" y="503" text-anchor="middle">Pi Agent 兼容运行时</text>
+  <text class="t small" x="1295" y="542" text-anchor="middle">相同工作台合同 · 独立运行时实现</text>
+  <rect class="box data" x="410" y="650" rx="24" width="350" height="130"/>
+  <text class="t label" x="585" y="707" text-anchor="middle">SQLite 事件与验收记录</text>
+  <text class="t small" x="585" y="746" text-anchor="middle">Session · Run · 脱敏证据</text>
+  <rect class="box data" x="870" y="650" rx="24" width="350" height="130"/>
+  <text class="t label" x="1045" y="707" text-anchor="middle">本地代码工作区</text>
+  <text class="t small" x="1045" y="746" text-anchor="middle">Run 基线 · Diff · 测试输出</text>
+  <path class="line" d="M320 385H405"/><text class="t small" x="362" y="368" text-anchor="middle">HTTP + SSE</text>
+  <path class="line" d="M655 385H740"/><text class="t small" x="697" y="368" text-anchor="middle">统一合同</text>
+  <path class="line" d="M990 350C1035 350 1045 265 1085 265"/>
+  <path class="line" d="M990 420C1035 420 1045 512 1085 512"/>
+  <path class="line" d="M530 460V650"/>
+  <path class="line" d="M865 460V592C865 625 930 625 930 650"/>
+  <path class="line" d="M1295 340V630C1295 676 1220 715 1220 715"/>
+</svg>

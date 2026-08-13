@@ -1,0 +1,19 @@
+.content {
+  z-index: 150;
+  max-width: 260px;
+  padding: 7px 10px;
+  border: 1px solid rgb(205 214 229 / 0.96);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.98);
+  box-shadow: 0 14px 38px rgb(30 48 82 / 0.15), inset 0 1px white;
+  color: #425069;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.45;
+  backdrop-filter: blur(18px);
+  transform-origin: var(--radix-tooltip-content-transform-origin);
+  animation: tooltip-in 120ms ease-out;
+}
+.arrow { fill: #fff; filter: drop-shadow(0 1px 0 rgb(205 214 229 / 0.96)); }
+@keyframes tooltip-in { from { opacity: 0; transform: scale(.97) translateY(2px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .content { animation: none; } }

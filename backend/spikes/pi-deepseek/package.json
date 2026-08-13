@@ -1,0 +1,30 @@
+{
+  "name": "@ff/pi-deepseek-spike",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.16.0"
+  },
+  "scripts": {
+    "check": "tsc --noEmit",
+    "probe": "tsx src/probe.ts",
+    "run": "tsx src/run.ts",
+    "control": "tsx src/control.ts",
+    "session": "tsx src/session-runtime.ts"
+  },
+  "dependencies": {
+    "@earendil-works/pi-ai": "0.84.1",
+    "@earendil-works/pi-agent-core": "0.84.1",
+    "@earendil-works/pi-client": "0.84.1",
+    "@earendil-works/pi-coding-agent": "0.84.1",
+    "@earendil-works/pi-protocol": "0.84.1",
+    "@earendil-works/pi-tui": "0.84.1",
+    "yaml": "2.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "tsx": "4.23.12",
+    "typescript": "7.0.2"
+  }
+}

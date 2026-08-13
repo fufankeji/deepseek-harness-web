@@ -1,6 +1,6 @@
 # 参与贡献
 
-感谢关注 `FF - DeepSeek Harness Web`。项目目前处于产品规划和技术选型阶段，请先阅读 [PRD](docs/PRD.md)、[产品规格](docs/specs/product-spec.md)、[技术架构](docs/architecture/architecture.md) 与 [实施计划](docs/plans/implementation-plan.md)。
+感谢关注 `FF - DeepSeek Harness Web`。V0.1 已实现 Pi Harness + DeepSeek 的真实本地运行链。产品规划文档保留在维护者本地且不会发布到 GitHub；公开贡献请以 README、Issue 与实际代码合同为准。
 
 ## 提交 Issue
 
@@ -12,15 +12,24 @@
 ## 提交 Pull Request
 
 1. 先确认改动可以追踪到现有需求或已讨论的 Issue。
-2. 保持 `frontend/`、`backend/` 和 `docs/` 的边界。
+2. 保持 `frontend/` 与 `backend/` 的边界；`docs/` 是维护者本地规划资料，不进入提交。
 3. 官方 Harness 专属字段只能进入 `backend/` 的官方 Adapter。
-4. 未知事件必须保留原始载荷并降级为 `raw`，不能使核心页面失败。
+4. 未知事件只保留字段白名单内的脱敏 `raw` 元数据并安全降级，不能转储完整上游对象或使核心页面失败。
 5. 使用最窄相关检查验证改动，并在 PR 中写明真实结果。
-6. 行为、协议或范围变化时同步更新 PRD、Spec、架构或实施计划。
+6. 行为、协议或范围变化时在 PR 中说明迁移影响；维护者负责同步本地产品文档。
 
-## 当前限制
+## 本地验证
 
-技术栈尚未确定，因此当前没有安装、启动、测试或构建命令。不要为了提交代码提前引入框架、CI、数据库或部署设施；先通过 Issue 对齐对应技术切片。
+要求 Node.js `24.16.0`：
+
+```bash
+npm run install:all
+npm run check
+npm run test:unit
+npm run build
+```
+
+真实模型验收会产生调用费用，且需要维护者授权的本地凭证；普通 PR 不要求贡献者运行。
 
 ## Commit 与 PR
 
@@ -28,4 +37,4 @@
 - 一个 PR 只解决一个明确问题，避免顺带重构无关内容。
 - PR 描述必须包含变更原因、可观察结果、验证方法与剩余限制。
 
-提交贡献即表示你有权提交相应内容。许可证确定前，外部代码贡献将暂缓合并，以避免权利边界不清。
+提交贡献即表示你有权提交相应内容。除非你明确书面声明其他安排，提交并被项目接收的贡献将按照 [Apache License 2.0](./LICENSE) 第 5 节授权。

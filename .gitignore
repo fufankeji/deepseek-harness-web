@@ -2,6 +2,8 @@
 .env
 .env.*
 !.env.example
+.local-secrets.yaml
+.credentials.yaml
 
 # Operating systems
 .DS_Store
@@ -18,8 +20,25 @@ Thumbs.db
 .cache/
 tmp/
 temp/
+node_modules/
 
 # Local build artifacts; extend after the technology stack is selected
 dist/
 build/
 coverage/
+playwright-report/
+test-results/
+
+# Local Bridge state (sessions, SQLite events, retained acceptance runs)
+backend/data/
+frontend/data/
+
+# Product planning is kept locally and excluded from GitHub publication
+/docs/
+
+# Internal delivery, recording, and design-source material
+/artifacts/
+/project-introduction/
+/source-materials/
+/student-delivery/
+/电影级剧本

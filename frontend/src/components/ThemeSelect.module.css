@@ -1,0 +1,61 @@
+.trigger {
+  width: 100%;
+  height: 40px;
+  padding: 0 11px 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid #d9dee7;
+  border-radius: 9px;
+  background: linear-gradient(180deg, #fff, #fbfcff);
+  box-shadow: 0 5px 16px rgb(30 48 82 / 0.045), inset 0 1px white;
+  color: #232a37;
+  text-align: left;
+}
+
+.trigger:hover:not([data-disabled]) { border-color: #afbee0; }
+.trigger[data-state="open"] { border-color: rgb(36 92 242 / 0.58); box-shadow: 0 0 0 3px rgb(36 92 242 / 0.08), 0 12px 30px rgb(30 48 82 / 0.09); }
+.trigger[data-disabled] { cursor: default; color: #667188; background: #f6f8fc; opacity: 1; }
+.triggerIcon { display: inline-flex; color: #78859d; }
+.trigger[data-state="open"] .triggerIcon { color: var(--color-accent); transform: rotate(180deg); }
+
+.content {
+  z-index: 140;
+  min-width: var(--radix-select-trigger-width);
+  max-height: min(320px, var(--radix-select-content-available-height));
+  overflow: hidden;
+  border: 1px solid rgb(205 214 229 / 0.96);
+  border-radius: 12px;
+  background: linear-gradient(155deg, rgb(255 255 255 / 0.99), rgb(245 249 255 / 0.98));
+  box-shadow: 0 24px 70px rgb(30 48 82 / 0.18), 0 5px 16px rgb(30 48 82 / 0.08), inset 0 1px white;
+  color: #2d384c;
+  backdrop-filter: blur(24px) saturate(125%);
+  transform-origin: var(--radix-select-content-transform-origin);
+  animation: select-in 150ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.viewport { padding: 6px; }
+.item {
+  position: relative;
+  min-height: 36px;
+  padding: 0 36px 0 11px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  outline: 0;
+  color: #46536a;
+  font-size: 14px;
+  user-select: none;
+}
+.item[data-highlighted] { color: #174fcb; background: linear-gradient(90deg, #edf3ff, #f4f7ff); }
+.item[data-state="checked"] { color: #174fcb; font-weight: 680; }
+.indicator { position: absolute; right: 10px; display: inline-flex; color: var(--color-accent); }
+.scrollButton { height: 24px; display: grid; place-items: center; color: #77849a; background: rgb(248 250 254 / 0.96); }
+
+@keyframes select-in {
+  from { opacity: 0; transform: translateY(-5px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) { .content { animation: none; } }

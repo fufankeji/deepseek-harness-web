@@ -1,0 +1,35 @@
+{
+  "name": "cinematic-product-film-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts CinematicProductFilm out/master.mp4",
+    "render:no-bgm": "remotion render src/index.ts CinematicProductFilm out/master-no-bgm.mp4 --props=props-nobgm.json",
+    "still": "remotion still src/index.ts CinematicProductFilm",
+    "capture": "node scripts/capture.mjs",
+    "contact-sheet": "node scripts/contact-sheet.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.484",
+    "@remotion/motion-blur": "4.0.484",
+    "@remotion/three": "4.0.484",
+    "@react-three/fiber": "9.7.0",
+    "playwright": "1.62.1",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "remotion": "4.0.484",
+    "three": "0.185.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.17",
+    "@types/three": "0.185.4",
+    "typescript": "6.0.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

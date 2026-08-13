@@ -1,0 +1,33 @@
+{
+  "name": "ff-deepseek-harness-web",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "engines": {
+    "node": "24.16.0"
+  },
+  "scripts": {
+    "install:all": "npm ci --prefix backend && npm ci --prefix frontend",
+    "dev": "npm run dev --prefix backend",
+    "start": "npm run start --prefix backend",
+    "check": "npm run check --prefix backend && npm run typecheck --prefix frontend",
+    "test:unit": "npm test --prefix backend && npm run test:unit --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "test:e2e": "npm run build && npm run test:e2e --prefix frontend",
+    "verify:real": "npm run verify:real --prefix backend",
+    "verify:controls": "npm run verify:controls --prefix backend",
+    "verify:restart": "npm run verify:restart --prefix backend",
+    "verify:commands": "npm run verify:commands --prefix backend",
+    "verify:import": "npm run verify:import --prefix backend",
+    "record:smoke": "node scripts/record/runner.mjs scripts/record/scripts/hero-scroll.json",
+    "record:validate": "node scripts/record/validate-recording-contract.mjs --plan scripts/record/recording-plan.json",
+    "record:raw": "cross-env RECORD_RAW=1 node scripts/record/runner.mjs",
+    "record:validate-cadence": "node scripts/record/validate-recording-cadence.mjs",
+    "record:prod": "node scripts/record/runner.mjs",
+    "record:post-process": "node scripts/record/post-process.mjs"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "playwright": "^1.62.1"
+  }
+}

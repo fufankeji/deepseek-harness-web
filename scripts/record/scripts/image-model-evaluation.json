@@ -1,0 +1,53 @@
+{
+  "name": "双模型真实生图评测",
+  "baseUrl": "http://127.0.0.1:3001",
+  "demonstration": {
+    "kind": "journey",
+    "mode": "live-result",
+    "evidenceKey": "image-evaluation-created",
+    "resultDescription": "本轮提交后创建新的 OpenRouter 评测 Run，并展示两款模型的真实运行状态、图片或失败事实与最终终态。"
+  },
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "slowMo": 0,
+  "speedup": 1,
+  "zooms": [],
+  "steps": [
+    { "action": "navigate", "url": "/#/arena", "settleMs": 1800 },
+    { "action": "waitFor", "selector": ".arena-v2-page", "timeout": 30000 },
+    { "action": "moveTo", "selector": "button:has-text('公平评测说明')", "moveMs": 360 },
+    { "action": "click", "selector": "button:has-text('公平评测说明')", "waitMs": 600 },
+    { "action": "waitFor", "selector": "[role='region'][aria-label='公平评测说明']", "timeout": 15000 },
+    { "action": "wait", "ms": 1200 },
+    { "action": "moveTo", "selector": "button:has-text('公平评测说明')", "moveMs": 340 },
+    { "action": "click", "selector": "button:has-text('公平评测说明')", "waitMs": 400 },
+    { "action": "moveTo", "selector": "button:has-text('选择模型')", "moveMs": 360 },
+    { "action": "click", "selector": "button:has-text('选择模型')", "waitMs": 400 },
+    { "action": "waitFor", "selector": "[role='group'][aria-label='选择参与评测的模型']", "timeout": 15000 },
+    { "action": "moveTo", "selector": "[role='group'][aria-label='选择参与评测的模型'] button:has-text('openai/gpt-5.4-image-2')", "moveMs": 360 },
+    { "action": "click", "selector": "[role='group'][aria-label='选择参与评测的模型'] button:has-text('openai/gpt-5.4-image-2')", "waitMs": 300 },
+    { "action": "moveTo", "selector": "[role='group'][aria-label='选择参与评测的模型'] button:has-text('openai/gpt-image-2')", "moveMs": 360 },
+    { "action": "click", "selector": "[role='group'][aria-label='选择参与评测的模型'] button:has-text('openai/gpt-image-2')", "waitMs": 400 },
+    { "action": "moveTo", "selector": "button:has-text('选择模型')", "moveMs": 340 },
+    { "action": "click", "selector": "button:has-text('选择模型')", "waitMs": 400 },
+    { "action": "moveTo", "selector": "textarea[aria-label='共享提示词']", "moveMs": 360 },
+    {
+      "action": "type",
+      "selector": "textarea[aria-label='共享提示词']",
+      "text": "一座未来东方图书馆悬浮在云海之上，钴蓝玻璃与暖金木构，清晨体积光，广角建筑摄影，电影级细节，无文字。",
+      "speed": 24
+    },
+    { "action": "captureState", "key": "image-evaluation-created", "selector": ".arena-results-page", "read": "count" },
+    { "action": "moveTo", "selector": "button:has-text('发起评测')", "moveMs": 380 },
+    { "action": "click", "selector": "button:has-text('发起评测')", "waitMs": 500 },
+    { "action": "waitForStateChange", "key": "image-evaluation-created", "timeout": 60000 },
+    { "action": "captureState", "key": "image-result-count", "selector": ".arena-result-card img", "read": "count" },
+    { "action": "moveTo", "x": 960, "y": 540, "moveMs": 340 },
+    { "action": "waitForStateChange", "key": "image-result-count", "timeout": 360000 },
+    { "action": "waitFor", "selector": ".arena-results-summary__status strong:is(:text('全部生成完成'), :text('完成，部分模型失败'))", "timeout": 420000 },
+    { "action": "moveTo", "x": 960, "y": 540, "moveMs": 340 },
+    { "action": "wait", "ms": 6000 }
+  ]
+}

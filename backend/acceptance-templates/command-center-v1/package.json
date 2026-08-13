@@ -1,0 +1,8 @@
+{
+  "name": "ff-command-center-acceptance",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node verify.mjs"
+  }
+}

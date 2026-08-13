@@ -1,0 +1,33 @@
+{
+  "name": "@ff/deepseek-harness-web-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": "24.16.0"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "start:e2e": "FF_TEST_INSTANCE=true FF_BRIDGE_PORT=${FF_E2E_BRIDGE_PORT:-4327} FF_BRIDGE_DATA_DIR=${FF_E2E_DATA_DIR:-../frontend/data/e2e} FF_ACCEPTANCE_LEDGER=${FF_ACCEPTANCE_LEDGER:-data/acceptance-ledger.sqlite} tsx src/server.ts",
+    "check": "tsc --noEmit --pretty false",
+    "test": "node --import tsx --test test/**/*.test.ts",
+    "verify:real": "tsx scripts/verify-real-flow.ts",
+    "verify:controls": "tsx scripts/verify-real-controls.ts",
+    "verify:restart": "tsx scripts/verify-real-restart.ts",
+    "verify:commands": "tsx scripts/verify-real-commands.ts",
+    "verify:import": "tsx scripts/verify-workspace-import.ts"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.1.0-rc.6",
+    "@earendil-works/pi-agent-core": "0.84.1",
+    "@earendil-works/pi-ai": "0.84.1",
+    "@earendil-works/pi-coding-agent": "0.84.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "tsx": "4.23.12",
+    "typescript": "7.0.2"
+  }
+}

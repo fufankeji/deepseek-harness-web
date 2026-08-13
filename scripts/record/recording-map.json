@@ -1,0 +1,181 @@
+{
+  "project": "FF - DeepSeek Harness Web 电影宣传片",
+  "source": "artifacts/cinematic/preproduction/journey-map.json",
+  "routes": [
+    {
+      "path": "/setup",
+      "title": "环境设置",
+      "purpose": "展示官方 DeepSeek Harness、V4 Pro、本地工作区与信任设置",
+      "interactions": [
+        {
+          "name": "选择官方 Harness",
+          "selector": "button[role='radio']:has-text('DeepSeek Harness')",
+          "action": "click",
+          "feedback": "开发环境检查结果",
+          "recordability": "ready"
+        },
+        {
+          "name": "选择 V4 Pro",
+          "selector": "#model",
+          "action": "click",
+          "feedback": "DeepSeek V4 Pro 出现在模型选择器",
+          "recordability": "ready"
+        },
+        {
+          "name": "选择隔离工作区",
+          "selector": "#workspace-path",
+          "action": "type",
+          "feedback": "工作区事实卡变为已就绪",
+          "recordability": "ready"
+        },
+        {
+          "name": "信任项目资源",
+          "selector": "button:has-text('信任项目资源')",
+          "action": "click",
+          "feedback": "访问权限变为信任项目资源",
+          "recordability": "ready"
+        }
+      ]
+    },
+    {
+      "path": "/workbench",
+      "title": "开发工作台",
+      "purpose": "提交真实开发任务并观察流式推理、工具调用、文件变化和完成态",
+      "interactions": [
+        {
+          "name": "新建会话",
+          "selector": "button:has-text('新建会话')",
+          "action": "click",
+          "feedback": "会话列表增加并切换到新的开发任务",
+          "recordability": "ready"
+        },
+        {
+          "name": "提交开发任务",
+          "selector": "button:has-text('发送任务')",
+          "action": "click",
+          "feedback": "执行过程从空闲进入运行并最终显示任务已完成",
+          "waitFor": "text=任务已完成",
+          "recordability": "ready"
+        },
+        {
+          "name": "打开结果",
+          "selector": "a:has-text('查看结果')",
+          "action": "click",
+          "feedback": "进入真实结果页",
+          "recordability": "ready"
+        }
+      ]
+    },
+    {
+      "path": "/results",
+      "title": "结果证据",
+      "purpose": "展示文件变化、验证输出与产物入口",
+      "interactions": []
+    },
+    {
+      "path": "http://127.0.0.1:3001/#/arena",
+      "title": "ImageModelArena 模型竞技场",
+      "purpose": "验证 V4 Pro 修改后的真实产品，并以同一提示词并行调用两款图片模型",
+      "interactions": [
+        {
+          "name": "展开公平评测说明",
+          "selector": "button:has-text('公平评测说明')",
+          "action": "click",
+          "feedback": "出现同一提示词、共同参数和单模型失败保留三条约束",
+          "recordability": "ready"
+        },
+        {
+          "name": "选择当前可用模型",
+          "selector": "[role='group'][aria-label='选择参与评测的模型']",
+          "action": "click",
+          "feedback": "本次选择 Gemini 3 Pro Image 与 GPT Image 2",
+          "recordability": "ready"
+        },
+        {
+          "name": "发起真实评测",
+          "selector": "button:has-text('发起评测')",
+          "action": "click",
+          "feedback": "创建新 Run，并显示运行中、部分结果与终态",
+          "waitFor": ".arena-results-page",
+          "recordability": "ready"
+        }
+      ]
+    }
+  ],
+  "features": [
+    {
+      "key": "journey-v4-pro-project-enhancement",
+      "name": "V4 Pro 真实开发链路",
+      "entry": {
+        "route": "/setup",
+        "selector": "button[role='radio']:has-text('DeepSeek Harness')"
+      },
+      "steps": [
+        "选择并检查官方 DeepSeek Harness",
+        "选择 DeepSeek V4 Pro 并使用本机已配置凭证完成连接检查",
+        "打开隔离的 ImageModelArena 工作区并设为可信",
+        "新建会话并提交公平评测说明开发任务",
+        "等待真实文件修改、验证命令和完成态",
+        "进入结果页查看证据"
+      ],
+      "selectors": {
+        "runtime": "button[role='radio']:has-text('DeepSeek Harness')",
+        "model": "#model",
+        "workspace": "#workspace-path",
+        "trust": "button:has-text('信任项目资源')",
+        "newSession": "button:has-text('新建会话')",
+        "composer": "textarea[placeholder*='描述你希望 Harness']",
+        "submit": "button:has-text('发送任务')",
+        "result": "text=任务已完成"
+      },
+      "waits": [
+        {
+          "after": "提交开发任务",
+          "selector": "text=任务已完成",
+          "timeout": 1800000
+        }
+      ],
+      "scrolls": [],
+      "recordability": "ready",
+      "evidence": "同一官方 Harness Bridge 已留下 6 次通过的真实验收记录；本次只更换为 V4 Pro 和隔离工作区。"
+    },
+    {
+      "key": "journey-live-model-evaluation",
+      "name": "双模型真实生图评测",
+      "entry": {
+        "route": "http://127.0.0.1:3001/#/arena",
+        "selector": ".arena-v2-page"
+      },
+      "steps": [
+        "展开 V4 Pro 新增的公平评测说明",
+        "选择 Gemini 3 Pro Image 与 GPT Image 2",
+        "输入同一条合成中文提示词",
+        "发起一次双模型评测",
+        "保留运行中、首个真实结果与最终终态"
+      ],
+      "selectors": {
+        "fairness": "button:has-text('公平评测说明')",
+        "picker": "[role='group'][aria-label='选择参与评测的模型']",
+        "prompt": "textarea[aria-label='共享提示词']",
+        "submit": "button:has-text('发起评测')",
+        "result": ".arena-results-page",
+        "images": ".arena-result-card img"
+      },
+      "waits": [
+        {
+          "after": "发起评测",
+          "selector": ".arena-results-page",
+          "timeout": 60000
+        },
+        {
+          "after": "模型开始返回",
+          "selector": ".arena-result-card img",
+          "timeout": 360000
+        }
+      ],
+      "scrolls": [],
+      "recordability": "ready",
+      "evidence": "隔离后端已同步 42 个真实图片模型；无付费预演确认两款目标模型、共同 16:9 参数和提交按钮可用，预演前后 Run 数均为 0。"
+    }
+  ]
+}

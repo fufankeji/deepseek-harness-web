@@ -1,0 +1,88 @@
+{
+  "fixtureVersion": 1,
+  "source": {
+    "capturedAt": "2026-08-12",
+    "piPackage": "@earendil-works/pi-coding-agent",
+    "piVersion": "0.84.1",
+    "piCommit": "53fa77ccd8a279eb87e92294ef3687b03ff80112",
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "driver": "direct-sdk",
+    "workspace": "generated-temporary-git-repository"
+  },
+  "sanitization": {
+    "credentials": "excluded",
+    "rawText": "excluded",
+    "reasoning": "excluded",
+    "absolutePaths": "excluded",
+    "toolTargets": "allowlisted-generated-paths-only"
+  },
+  "updateSemantics": {
+    "message_update.text_delta.delta": "delta",
+    "message_update.toolcall_delta.delta": "delta",
+    "message_update.partial": "snapshot-not-forwarded",
+    "message_end.message": "final",
+    "tool_execution_update.partialResult": "snapshot",
+    "tool_execution_end.result": "final",
+    "queue_update.steering": "snapshot",
+    "queue_update.followUp": "snapshot",
+    "agent_settled": "settled-signal"
+  },
+  "mainRun": {
+    "eventCounts": {
+      "agent_start": 1,
+      "turn_start": 4,
+      "message_start": 9,
+      "message_update": 149,
+      "message_end": 9,
+      "tool_execution_start": 4,
+      "tool_execution_update": 2,
+      "tool_execution_end": 4,
+      "turn_end": 4,
+      "agent_end": 1,
+      "agent_settled": 1
+    },
+    "messageUpdateCounts": {
+      "text_start": 2,
+      "text_delta": 56,
+      "text_end": 2,
+      "toolcall_start": 4,
+      "toolcall_delta": 81,
+      "toolcall_end": 4
+    },
+    "tools": [
+      { "phase": "start", "name": "read", "target": "src/counter.js" },
+      { "phase": "start", "name": "read", "target": "test.mjs" },
+      { "phase": "end", "name": "read", "isError": false },
+      { "phase": "end", "name": "read", "isError": false },
+      { "phase": "start", "name": "edit", "target": "src/counter.js" },
+      { "phase": "end", "name": "edit", "isError": false },
+      { "phase": "start", "name": "bash", "target": "node test.mjs" },
+      { "phase": "end", "name": "bash", "isError": false }
+    ],
+    "result": {
+      "independentTestExitCode": 0,
+      "changedFiles": ["src/counter.js"],
+      "gitDiffObserved": true
+    }
+  },
+  "controlRun": {
+    "queueSnapshots": [
+      { "steering": 1, "followUp": 0 },
+      { "steering": 1, "followUp": 1 },
+      { "steering": 0, "followUp": 0 }
+    ],
+    "assistantStopReasonsAfterToolAbort": ["toolUse", "error"],
+    "agentSettledObserved": true,
+    "stopContract": "clear-queue-then-abort"
+  },
+  "sessionRuntime": {
+    "generations": 4,
+    "newSessionObjectReplaced": true,
+    "newSessionMessageHistoryCount": 0,
+    "resumedMessageHistoryCount": 2,
+    "forkedMessageHistoryCount": 2,
+    "forkParentLinked": true,
+    "staleEventCount": 0
+  }
+}

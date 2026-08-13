@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FF - DeepSeek Harness Web · 电影感视觉方向</title>
+    <link rel="stylesheet" href="styleframes.css" />
+  </head>
+  <body>
+    <main>
+      <section class="frame frame--opening" data-frame="opening">
+        <div class="aurora aurora--blue"></div>
+        <div class="aurora aurora--violet"></div>
+        <div class="grid-floor"></div>
+        <div class="grain"></div>
+        <div class="brand-lockup">
+          <img src="assets/ff-logo.png" alt="FF - DeepSeek Harness Web Logo" />
+          <div><strong>FF - DeepSeek Harness Web</strong><span>浏览器里的真实开发工作台</span></div>
+        </div>
+        <div class="opening-copy">
+          <span>DeepSeek Harness</span>
+          <h1>让 DeepSeek<br />真正进入项目</h1>
+          <p>从配置、执行到文件验证，完整开发链路都在浏览器里发生。</p>
+        </div>
+        <div class="interface-gate">
+          <div class="gate-echo gate-echo--far"></div>
+          <div class="gate-echo gate-echo--near"></div>
+          <figure class="page-card page-card--opening">
+            <img src="assets/setup.png" alt="DeepSeek Harness 配置页面" />
+          </figure>
+        </div>
+        <div class="direction-note">视觉方向 · 深蓝光场与真实界面</div>
+      </section>
+
+      <section class="frame frame--execution" data-frame="execution">
+        <div class="aurora aurora--blue aurora--execution"></div>
+        <div class="aurora aurora--cyan"></div>
+        <div class="grain"></div>
+        <div class="brand-lockup">
+          <img src="assets/ff-logo.png" alt="FF - DeepSeek Harness Web Logo" />
+          <div><strong>FF - DeepSeek Harness Web</strong><span>官方 DeepSeek Harness</span></div>
+        </div>
+        <div class="execution-copy">
+          <span>真实开发过程</span>
+          <h1>每一步执行，<br />都有迹可循。</h1>
+          <p>分析、读取、修改、验证，在同一条时间线上持续发生。</p>
+          <div class="process-rail">
+            <i></i><b>分析任务</b><i></i><b>读取代码</b><i></i><b>修改文件</b><i></i><b>运行验证</b>
+          </div>
+        </div>
+        <div class="execution-stage">
+          <div class="page-shadow page-shadow--back"></div>
+          <div class="page-shadow page-shadow--mid"></div>
+          <figure class="page-card page-card--execution">
+            <img src="assets/execution.png" alt="DeepSeek Harness 真实执行过程" />
+          </figure>
+          <div class="focus-pill"><i></i> DeepSeek 正在执行真实任务</div>
+        </div>
+        <div class="direction-note">视觉方向 · 界面成为可进入的空间</div>
+      </section>
+
+      <section class="frame frame--proof" data-frame="proof">
+        <div class="aurora aurora--mint"></div>
+        <div class="aurora aurora--peach"></div>
+        <div class="grain"></div>
+        <div class="brand-lockup">
+          <img src="assets/ff-logo.png" alt="FF - DeepSeek Harness Web Logo" />
+          <div><strong>FF - DeepSeek Harness Web</strong><span>从代码变化到运行结果</span></div>
+        </div>
+        <header class="proof-copy">
+          <span>真实结果验证</span>
+          <h1>从代码，到运行中的产品。</h1>
+          <p>Diff、构建结果与真实产品画面共同完成闭环。</p>
+        </header>
+        <div class="proof-stage">
+          <figure class="proof-card proof-card--diff">
+            <img src="assets/diff.png" alt="真实代码 Diff" />
+            <figcaption><i></i> 文件变化已落盘</figcaption>
+          </figure>
+          <div class="proof-bridge"><span></span><b>构建通过</b><span></span></div>
+          <figure class="proof-card proof-card--product">
+            <img src="assets/product-result.png" alt="运行中的 FF - AI 图像工作台" />
+            <figcaption><i></i> 产品结果可以直接验证</figcaption>
+          </figure>
+        </div>
+        <div class="direction-note">视觉方向 · 证据完成最终落点</div>
+      </section>
+    </main>
+    <script>
+      const selected = new URLSearchParams(location.search).get('frame') || 'opening';
+      document.querySelectorAll('[data-frame]').forEach((node) => {
+        node.hidden = node.dataset.frame !== selected;
+      });
+    </script>
+  </body>
+</html>

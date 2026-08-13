@@ -1,0 +1,395 @@
+.shell {
+  --rail-width: 66px;
+  position: relative;
+  isolation: isolate;
+  height: 100dvh;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: var(--rail-width) minmax(0, 1fr);
+  background: #fff;
+  color: var(--color-text);
+  overflow: hidden;
+  transition: grid-template-columns 200ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.railExpanded { --rail-width: 206px; }
+
+.shell::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgb(17 24 39 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(17 24 39 / 0.035) 1px, transparent 1px),
+    linear-gradient(rgb(17 24 39 / 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(17 24 39 / 0.018) 1px, transparent 1px);
+  background-size: 64px 64px, 64px 64px, 16px 16px, 16px 16px;
+  mask-image: linear-gradient(to bottom, black 0%, black 84%, transparent 100%);
+}
+
+.shell::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  inset: 78px 0 auto var(--rail-width);
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgb(17 24 39 / 0.12) 50%, transparent);
+}
+
+.rail {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid rgb(224 226 230 / 0.92);
+  background: rgb(255 255 255 / 0.92);
+  box-shadow: 8px 0 30px rgb(15 20 28 / 0.04), inset -1px 0 rgb(255 255 255 / 0.96);
+  backdrop-filter: blur(28px);
+  transition: padding 200ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.menuButton,
+.iconButton,
+.railLink {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--color-muted);
+  transition: color 140ms ease, background 140ms ease, transform 140ms ease;
+}
+
+.menuButton {
+  margin-top: 20px;
+  padding: 3px;
+  border: 1px solid #e1e3e7;
+  background: #fff;
+  box-shadow: 0 7px 20px rgb(19 24 33 / 0.08), inset 0 1px white;
+  overflow: hidden;
+}
+
+.menuButton img { width: 34px; height: 34px; display: block; border-radius: 9px; object-fit: contain; }
+
+.railBrand,
+.railLabel {
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  color: #343944;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+  transform: translateX(-4px);
+  transition: width 180ms ease, opacity 140ms ease, transform 180ms ease;
+}
+
+.railBrand { color: #1e222a; font-size: 14px; font-weight: 740; letter-spacing: -0.02em; }
+
+.railToggle {
+  position: absolute;
+  z-index: 2;
+  top: 78px;
+  right: -11px;
+  width: 23px;
+  height: 23px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #dfe3ea;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.98);
+  box-shadow: 0 5px 15px rgb(20 28 40 / 0.1);
+  color: #778294;
+  transition: color 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.railToggle:hover { border-color: #bfcbe0; color: var(--color-accent); transform: scale(1.06); }
+
+.railNav {
+  margin-top: 54px;
+  width: 42px;
+  display: grid;
+  gap: 12px;
+  transition: width 200ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.railLink {
+  position: relative;
+}
+
+.navGlyph {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  display: grid;
+  place-items: center;
+  transition: color 140ms ease, transform 140ms ease;
+}
+
+.productGlyph {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.railLink:hover,
+.iconButton:hover {
+  color: var(--color-accent);
+  background: #f7f9fc;
+}
+
+.railLink:hover .navGlyph {
+  transform: translateY(-1px);
+}
+
+.railLink.active {
+  color: #245eb8;
+}
+
+.iconButton:disabled { cursor: not-allowed; opacity: 0.45; box-shadow: none; transform: none; }
+.disabledTooltipTarget { display: inline-flex; border-radius: 12px; }
+
+.activeRail {
+  position: absolute;
+  left: -12px;
+  width: 3px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  box-shadow: 0 0 12px rgb(15 97 255 / 0.45);
+}
+
+.railFooter {
+  margin-top: auto;
+  margin-bottom: 24px;
+  display: grid;
+  gap: 10px;
+}
+
+.railExpanded .rail { align-items: stretch; padding: 0 10px; }
+.railExpanded .menuButton { width: 100%; justify-content: flex-start; gap: 10px; }
+.railExpanded .railBrand,
+.railExpanded .railLabel { width: auto; flex: 1; opacity: 1; transform: translateX(0); }
+.railExpanded .railNav { width: 100%; }
+.railExpanded .railLink,
+.railExpanded .iconButton { width: 100%; justify-content: flex-start; gap: 8px; padding: 0 6px; }
+.railExpanded .railLink.active { background: #f4f7fc; box-shadow: inset 0 0 0 1px #e4e9f2; }
+.railExpanded .activeRail { left: -10px; }
+.railExpanded .railFooter { width: 100%; }
+.railExpanded .disabledTooltipTarget { width: 100%; }
+
+.stage {
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  z-index: 15;
+  min-height: 78px;
+  padding: 0 18px 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid rgb(224 226 230 / 0.92);
+  background: rgb(255 255 255 / 0.9);
+  box-shadow: 0 8px 30px rgb(15 20 28 / 0.035), inset 0 1px rgb(255 255 255 / 0.98);
+  backdrop-filter: blur(28px);
+}
+
+.compactHeader {
+  min-height: 68px;
+}
+
+.brand {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: #18191d;
+  font-size: 24px;
+  font-weight: 760;
+  letter-spacing: -0.035em;
+  text-shadow: 0 1px rgb(255 255 255 / 0.7);
+  white-space: nowrap;
+}
+
+.brand span { overflow: hidden; text-overflow: ellipsis; }
+
+.headerMeta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 0;
+}
+
+.runtimeBadge,
+.githubBadge {
+  min-height: 36px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgb(218 220 225 / 0.92);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.92);
+  box-shadow: 0 7px 20px rgb(19 24 33 / 0.055), inset 0 1px white;
+  color: #343842;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.githubBadge:hover {
+  border-color: #b9bec7;
+  color: #111318;
+  box-shadow: 0 10px 26px rgb(19 24 33 / 0.09), inset 0 1px white;
+  transform: translateY(-1px);
+}
+
+.githubBadge img {
+  width: 16px;
+  height: 16px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.connectionBanner {
+  min-height: 38px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-bottom: 1px solid #f2d4a8;
+  background: #fff6e7;
+  color: #8a5b13;
+  font-size: 15px;
+}
+
+.connectionBanner a {
+  color: #6a49c9;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.content {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+}
+
+.lockedContent {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.productFooter {
+  position: relative;
+  z-index: 18;
+  min-height: 30px;
+  flex: 0 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgb(226 228 232 / 0.9);
+  background: rgb(255 255 255 / 0.94);
+  color: #7b808a;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(18px);
+}
+
+.toast {
+  position: fixed;
+  z-index: 80;
+  right: 22px;
+  bottom: 22px;
+  min-height: 42px;
+  max-width: min(360px, calc(100vw - 32px));
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgb(210 213 219 / 0.92);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 0.96);
+  box-shadow: 0 16px 44px rgb(19 24 33 / 0.14);
+  backdrop-filter: blur(18px);
+  color: #3f4652;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.toast svg { flex: 0 0 auto; color: var(--color-success); }
+
+@media (max-width: 1020px) {
+  .shell { --rail-width: 56px; }
+  .shell.railExpanded { --rail-width: 196px; }
+  .runtimeBadge { display: none; }
+  .header { padding-left: 18px; }
+}
+
+@media (max-width: 1180px) {
+  .lockedContent {
+    display: block;
+    overflow: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .shell { height: auto; min-height: 100dvh; display: block; overflow: visible; }
+  .rail {
+    position: fixed;
+    inset: auto 12px 12px;
+    z-index: 50;
+    width: auto;
+    height: 58px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgb(215 218 224 / 0.94);
+    border-radius: 18px;
+    box-shadow: 0 18px 48px rgb(19 24 33 / 0.16);
+  }
+  .railExpanded .rail { align-items: center; padding: 0; }
+  .menuButton { margin: 0; }
+  .railNav { margin: 0; display: flex; }
+  .railFooter { margin: 0; display: flex; }
+  .railToggle, .railBrand, .railLabel { display: none; }
+  .railExpanded .menuButton, .railExpanded .railLink, .railExpanded .iconButton { width: 42px; padding: 0; justify-content: center; }
+  .railExpanded .railNav, .railExpanded .railFooter { width: auto; }
+  .activeRail { left: 10px; bottom: -5px; width: 22px; height: 3px; }
+  .header { min-height: 66px; padding: 0 14px; }
+  .brand { max-width: 230px; font-size: 19px; }
+  .githubBadge { width: 36px; padding: 0; justify-content: center; }
+  .githubBadge { font-size: 0; }
+  .stage { height: auto; min-height: 100dvh; overflow: visible; }
+  .content { padding-bottom: 0; overflow: visible; }
+  .productFooter { min-height: 100px; padding-bottom: 70px; }
+  .toast { right: 16px; bottom: 84px; }
+}

@@ -1,0 +1,30 @@
+{
+  "baseUrl": "http://127.0.0.1:3000",
+  "outputDir": "public/textures",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 2
+  },
+  "dataPolicy": {
+    "classification": "synthetic",
+    "approved": false,
+    "approvalEvidence": ""
+  },
+  "pages": [
+    {
+      "key": "home",
+      "path": "/",
+      "waitFor": "body",
+      "settleMs": 600,
+      "maskSelectors": [],
+      "elements": [
+        {
+          "key": "hero",
+          "selector": "main"
+        }
+      ],
+      "backplates": []
+    }
+  ]
+}

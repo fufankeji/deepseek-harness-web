@@ -1,0 +1,62 @@
+{
+  "mode": "full-project",
+  "confirmationMode": "pipeline-batched",
+  "approval": {
+    "status": "approved",
+    "notes": "用户在 2026-08-14 确认电影宣传片前期方案，并明确授权一次 DeepSeek V4 Pro 开发任务与一次双模型真实生图评测；等待时间由后期压缩。",
+    "visualPolicy": "no-zoom",
+    "reviewPolicy": "self-check-then-final-delivery"
+  },
+  "recordings": [
+    {
+      "key": "journey-v4-pro-project-enhancement",
+      "kind": "journey",
+      "script": "scripts/record/scripts/deepseek-v4-pro-project.json",
+      "output": "scripts/cinematic/public/media/v4-pro-project-run-raw.mp4",
+      "operationEvidence": {
+        "mode": "live-result",
+        "evidenceKey": "v4-pro-run-completed",
+        "resultDescription": "本轮提交后，官方 DeepSeek Harness 产生新的工具事件、文件变化、验证输出与任务完成态。",
+        "preflight": {
+          "status": "verified",
+          "notes": "同一 Bridge 上已有 6 次官方 Harness 全链路真实验收通过；本片选择器与入口已完成无付费预演，V4 Pro 连接检查已一次通过，正式开发任务仅提交一次。"
+        },
+        "sideEffects": {
+          "kind": "external-authorized",
+          "notes": "一次 V4 Pro 付费开发调用，并只修改本片专用 ImageModelArena 隔离副本；原项目保持不变。"
+        },
+        "authorizationEvidence": "用户明确表示允许调用并指定使用 V4 Pro，且要求真实触发；等待过程剪辑，失败不自动重试。"
+      }
+    },
+    {
+      "key": "journey-live-model-evaluation",
+      "kind": "journey",
+      "script": "scripts/record/scripts/image-model-evaluation.json",
+      "output": "scripts/cinematic/public/media/image-evaluation-raw.mp4",
+      "operationEvidence": {
+        "mode": "live-result",
+        "evidenceKey": "image-evaluation-created",
+        "resultDescription": "本轮提交后创建新的 OpenRouter 评测 Run，并展示两款模型的真实运行状态、图片或失败事实与最终终态。",
+        "preflight": {
+          "status": "verified",
+          "notes": "隔离后端同步到 42 个真实图片模型；无付费预演完成模型选择、提示词、公平说明和按钮可用性核验，预演前后 Run 数均为 0。"
+        },
+        "sideEffects": {
+          "kind": "external-authorized",
+          "notes": "一次双模型 OpenRouter 图片评测，最多产生两次底层图片生成调用；结果只写入隔离副本 runtime。"
+        },
+        "authorizationEvidence": "用户明确允许真实付费调用与触发生图，并要求剪掉等待时间；失败不自动重试。"
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "name": "执行斜杠命令",
+      "reason": "只展示真实命令目录，不执行 /compact 等会话变更命令。"
+    },
+    {
+      "name": "Pi Agent 付费任务",
+      "reason": "Pi Agent 只作为已支持能力轻量带到，不稀释 DeepSeek 官方 Harness 主线。"
+    }
+  ]
+}

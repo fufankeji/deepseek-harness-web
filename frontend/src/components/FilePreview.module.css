@@ -1,0 +1,14 @@
+.empty { height: 100%; min-height: 260px; display: grid; place-content: center; justify-items: center; gap: 11px; padding: 24px; background: #0d0f12; color: #8d98aa; font-size: 13px; text-align: center; }
+.empty svg { width: 22px; color: #667792; }
+.imageStage, .htmlStage { position: relative; height: 100%; min-height: 260px; padding: 20px 20px 42px; display: grid; place-items: center; overflow: auto; background: #11151c; }
+.imageStage img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 16px 40px rgb(0 0 0 / .3); }
+.imageStage span, .htmlStage span { position: absolute; right: 12px; bottom: 10px; left: 12px; color: #8490a5; font-size: 11px; text-align: center; }
+.htmlStage iframe { width: 100%; height: 100%; min-height: 420px; border: 0; border-radius: 8px; background: #fff; }
+.spinner { animation: spin 800ms linear infinite; }
+.download { position: absolute; top: 10px; right: 10px; z-index: 2; height: 30px; padding: 0 9px; display: inline-flex; align-items: center; gap: 5px; border: 1px solid rgb(255 255 255 / .16); border-radius: 7px; background: rgb(15 20 28 / .78); color: #dbe6f8; font-size: 12px; backdrop-filter: blur(10px); }
+.download:hover { border-color: #7ea5f4; color: #fff; }
+.markdownStage { position: relative; height: 100%; min-height: 260px; overflow: auto; background: #fff; }
+.markdownStage .download { position: sticky; float: right; margin: 10px; }
+.markdownDocument { max-width: 780px; margin: 0 auto; padding: 38px 42px 70px; }
+.unsupported { position: relative; height: 100%; min-height: 260px; background: #0d0f12; }
+@keyframes spin { to { transform: rotate(360deg); } }
