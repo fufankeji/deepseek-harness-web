@@ -31,6 +31,7 @@ test-results/
 
 # Local Bridge state (sessions, SQLite events, retained acceptance runs)
 backend/data/
+backend/backend/data/
 frontend/data/
 
 # Product planning is kept locally and excluded from GitHub publication
