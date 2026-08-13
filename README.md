@@ -57,12 +57,12 @@ These projects are complementary, not mutually exclusive:
 This cinematic overview introduces the browser-first setup, the real DeepSeek development workflow, observable execution, file verification, Pi compatibility, and familiar Harness commands. The product screenshots below provide the detailed engineering evidence behind the film.
 
 <p align="center">
-  <a href="./.github/assets/readme/demo.mp4">
+  <a href="https://cdn.jsdelivr.net/gh/fufankeji/deepseek-harness-web@v0.1.0/.github/assets/readme/demo.mp4">
     <img src="./.github/assets/readme/hero.png" alt="FF - DeepSeek Harness Web cinematic product film — click to watch" width="100%" />
   </a>
 </p>
 
-<p align="center"><a href="./.github/assets/readme/demo.mp4"><strong>▶ Watch the 32-second cinematic film (MP4)</strong></a></p>
+<p align="center"><a href="https://cdn.jsdelivr.net/gh/fufankeji/deepseek-harness-web@v0.1.0/.github/assets/readme/demo.mp4"><strong>▶ Watch the 32-second cinematic film (MP4)</strong></a></p>
 
 ## Product tour
 

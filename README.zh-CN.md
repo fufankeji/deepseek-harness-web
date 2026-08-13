@@ -57,12 +57,12 @@ FF - DeepSeek Harness Web 解决的是另一个产品问题：把本地 Harness 
 这支电影级短片集中呈现浏览器零门槛配置、DeepSeek 真实开发链路、可感知执行过程、文件结果核验、Pi 兼容与常用 Harness 命令。下方产品实景则进一步给出对应的工程证据。
 
 <p align="center">
-  <a href="./.github/assets/readme/demo.mp4">
+  <a href="https://cdn.jsdelivr.net/gh/fufankeji/deepseek-harness-web@v0.1.0/.github/assets/readme/demo.mp4">
     <img src="./.github/assets/readme/hero.png" alt="FF - DeepSeek Harness Web 电影级产品片，点击播放" width="100%" />
   </a>
 </p>
 
-<p align="center"><a href="./.github/assets/readme/demo.mp4"><strong>▶ 观看 32 秒电影级产品片（MP4）</strong></a></p>
+<p align="center"><a href="https://cdn.jsdelivr.net/gh/fufankeji/deepseek-harness-web@v0.1.0/.github/assets/readme/demo.mp4"><strong>▶ 观看 32 秒电影级产品片（MP4）</strong></a></p>
 
 ## 产品实景
 
